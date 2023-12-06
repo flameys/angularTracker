@@ -1,0 +1,24 @@
+<div class="month-list-content" style="margin-left: 10px;">
+
+    <ul class="list-group ">
+        <!-- <a routerLink="/uitgave/{{maandItem.maand}}" class="list-group-item clearfix"  -->
+        <!-- <a routerLink="'/uitgave', { my_object: JSON.stringify()this.maandItem }]"> -->
+
+        <a routerLink="/uitgave/{{maandItem.maand}}/{{maandItem.jaar}}/{{maandItem.amount}}" class="list-group-item  d-flex justify-content-between align-items-center" >
+            
+              <div class="me-2">
+                <h6 class="mb-0 text-center" style="margin-left: 140px; letter-spacing: 4px;">{{ maandItem.maand }} {{ maandItem.jaar}}</h6>
+                <p class="mb-0 " style="margin-left: 140px; letter-spacing: 5px;" >Inkomen: SRD {{ maandItem.amount }}</p>
+              </div>
+            
+            
+            <div class="col-auto">
+            <i class="bi bi-arrow-right-square larger-icon"></i>
+            </div>
+        </a>
+
+    </ul>
+    
+</div>
+
+

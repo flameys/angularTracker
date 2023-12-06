@@ -1,0 +1,30 @@
+/* .month-list-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 75%;
+    margin: 0px auto;
+} */
+
+
+.list-group-item{
+    border-bottom: 1px solid black;
+    /* max-width: 227px; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    height: auto;
+    
+}
+.list-group-item:hover{
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+.bi-arrow-right-square{
+    color: white;
+    padding: 8px;
+}

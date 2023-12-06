@@ -1,0 +1,50 @@
+.month-name {
+      display: flex;
+      align-items: center;
+      font-size: 24px; /* Adjust the font size as needed */
+      font-weight: bold; /* Make the text bold */
+      color: #333; /* Set the text color */
+      margin-top: 30px;
+      margin-bottom: 40px; /* Add space under the entire month-name container */
+    }
+
+.bi-arrow-left-square{
+      margin-right: 30px;
+      
+}
+.bi-arrow-left-square:hover{
+  color: grey;
+}
+
+.separator {
+  border-top: 1px solid black; /* or any other desired color */
+ 
+}
+
+.boxed-cell{
+ 
+  border: 1px solid #ccc;
+}
+
+.btn-table{
+  margin-left: 8px;
+  border:  1px solid black ;
+}
+.btn-table:hover{
+  color:white;
+  background-color: black;
+}
+
+.additional-column {
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 6px;
+  margin-left: 30px;
+}
+
+.data-table{
+  border-left: 1px dashed #bebebe;
+  border-bottom: 1px dashed #bebebe;
+  padding-left: 10px;
+  
+}

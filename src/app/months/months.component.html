@@ -1,0 +1,86 @@
+<div class="container">
+
+    <div class="row justify-content-md-center" style="margin-top: 100px;">
+      
+        <div class="col-12 col-md-7">
+          <form class="form" [formGroup]="registerMaand" (ngSubmit)="onSubmitMonth1()">
+            
+            <div>
+              <label for="alle-maanden">Kies een maand uit:</label>
+              <select class="select-box" style="margin-left: 10px;" formControlName="maand1">
+                <option value="" disabled selected hidden>MAAND</option>
+                <option value="Januari">Januari</option> 
+                <option value="Februari">Februari</option> 
+                <option value="Maart">Maart</option> 
+                <option value="April">April</option> 
+                <option value="Mei">Mei</option> 
+                <option value="Juni">Juni</option> 
+                <option value="Juli">Juli</option> 
+                <option value="Augustus">Augustus</option> 
+                <option value="September">September</option> 
+                <option value="Oktober">Oktober</option> 
+                <option value="November">November</option> 
+                <option value="December">December</option> 
+              </select>
+            </div>
+            <div *ngIf="registerMaand.get('maand1').invalid && (registerMaand.get('maand1').dirty || registerMaand.get('maand1').touched)" class="text-danger">
+              Selecteer een maand.
+            </div>
+
+            <div class="field">
+              <label>Jaar</label>
+              <input type="number" min="2000" max="2030"
+              id="jaar"
+              class="form-control"
+              formControlName="jaar1"
+              > <!--  [(ngModel)]="jaar" -->
+            </div>
+            <div *ngIf="registerMaand.get('jaar1').invalid && (registerMaand.get('jaar1').dirty || registerMaand.get('jaar1').touched)" class="text-danger">
+              Voeg een jaar in van 2000 - 2023.
+            </div>
+
+            <div class="field">
+              <label>Inkomen</label>
+              <input type="number"
+              id="inkomst"
+              class="form-control"
+              formControlName="inkomen1"
+              > <!-- [(ngModel)]="inkomen" -->
+            </div>
+            <div *ngIf="registerMaand.get('inkomen1').invalid && (registerMaand.get('inkomen1').dirty || registerMaand.get('inkomen1').touched)" class="text-danger">
+               Voeg een uw inkomen in.
+            </div>
+
+
+            <div class="row">
+              <div class="col-xs-12">
+                <button class="submitButton" type="submit" style ="cursor: pointer;"[disabled]="registerMaand.invalid">CREATE MONTH</button>
+              </div>
+            </div>
+            <div *ngIf="registerMaand.invalid && (registerMaand.dirty || registerMaand.touched)" class="text-danger">
+              Vul alle velden in.
+            </div>
+
+        </form>
+        </div>
+    
+  
+      <div class="col-6 col-md-5">
+        <app-months-list *ngFor="let maandElement of maanden"
+        [maandItem]="maandElement"
+        > <!-- (selectedMaand)="getSelectedMaand(maandElement)"
+          door de event van selectedMaand(aka the click van een maandItem in de list), wordt getSelectedMaand(param) getriggered om
+        executed te worden. Deze method stuurt de current maandElement naar zijn child component??? -->
+        </app-months-list>
+      </div> 
+      
+    </div>
+
+    <!-- <div>
+      <app-uitgave 
+      (gotMaand)="getSelectedMaand">
+      </app-uitgave>
+    </div> -->
+  </div>
+
+

@@ -1,0 +1,88 @@
+<div class = "container">
+    <div class="row justify-content-center"> <!-- Center the row horizontally -->
+        <div class="col-12 text-center"> <!-- Center the content within the column -->
+            <div class="month-name">
+
+                <h3><a routerLink="" style="color: #000;"><i class="bi bi-arrow-left-square"></i></a></h3>
+                <h3><span>{{maandString}} {{maandJaar}}</span></h3>
+
+                <div class="additional-column ">
+                    <h5>Totale inkomen: SRD {{maandInkomen}}</h5>
+                    <h5 style="background-color: #333; color: white; border-radius: 4px;">Rest: SRD {{maandInkomen - totaalAlles}} </h5>
+                    <!-- <ng-template #notNull>
+                        <h5>Rest: SRD {{maandInkomen - totaalAlles}}</h5>
+                    </ng-template> -->
+                </div>
+               
+            </div>
+
+            
+        </div>
+    </div>
+    <table style="width: 100%;">
+        <thead>
+            <tr >
+                
+                <th style="padding-left: 10px;">Datum</th>
+                <th style="padding-left: 10px;">Onderwerp</th>
+                <th style="padding-left: 10px;">Totaal</th>
+                <th style="padding-left: 10px;"></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+
+           
+                <tr >               
+                    <td><input type="date" class="form-control" placeholder="datum" [(ngModel)]="datum"></td>
+                    <td><input type="text" class="form-control" placeholder="onderwerp" [(ngModel)]="onderwerp"></td>
+                    <td><input id="uitgaveTotaal" type="number" class="form-control" placeholder="totaal" [(ngModel)]="totaal"></td>
+
+                    <!-- <td><input type="text" class="form-control" placeholder="datum" formControlName="datum1"></td>
+                    <td><input type="text" class="form-control" placeholder="onderwerp" formControlName="onderwerp1"></td>
+                    <td><input type="text" class="form-control" placeholder="totaal" formControlName="totaal1"></td> -->
+
+                    <td>
+                        <button class="btn btn-table" type="submit" (click)="createUitgaveMaand()">Save Uitgave</button>
+                    </td>
+                    <!-- <div *ngIf="registerUitgave.invalid && (registerUitgave.dirty || registerUitgave.touched)" class="text-danger">
+                        Vul alle velden in.
+                      </div>
+                 -->
+                </tr>
+
+                <tr *ngFor="let uitgaveElement of uitgaven" style="margin-bottom: 2px;"
+                >
+                    
+                    <td class="data-table" style="border-left: none;" >{{uitgaveElement.datum}}</td>
+                    <td class="data-table" >{{uitgaveElement.onderwerp}}</td>
+                    <td class="data-table">{{uitgaveElement.totaal}}</td>
+                   
+                    
+                    
+                </tr>
+
+                <tr class="separator" >
+                    <td colspan="3"></td>
+                </tr>
+
+           
+            <tr>
+                <td></td>
+                
+                <!-- <td *ngIf="totaal === 0; else totaalOptellen">Totale uitgaven: {{totaal}}</td>
+                <ng-template #totaalOptellen>
+                    <td>Totale uitgaven: {{totaal + totaal}}</td>
+                </ng-template> -->
+
+                <td *ngIf="totaalAlles !== 0">Totale uitgaven: </td>
+                <td class="boxed-cell">{{totaalAlles}}</td>
+                
+                
+
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
