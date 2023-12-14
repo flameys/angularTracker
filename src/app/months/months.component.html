@@ -3,12 +3,12 @@
     <div class="row justify-content-md-center" style="margin-top: 100px;">
       
         <div class="col-12 col-md-7">
-          <form class="form" [formGroup]="registerMaand" (ngSubmit)="onSubmitMonth1()">
+          <form class="form" [formGroup]="registerMaand" (ngSubmit)="onSubmitMonth2()">
             
             <div>
               <label for="alle-maanden">Kies een maand uit:</label>
               <select class="select-box" style="margin-left: 10px;" formControlName="maand1">
-                <option value="" disabled selected hidden>MAAND</option>
+                <option value="" disabled selected hidden>- Selecteer een maand -</option>
                 <option value="Januari">Januari</option> 
                 <option value="Februari">Februari</option> 
                 <option value="Maart">Maart</option> 
@@ -66,7 +66,7 @@
     
   
       <div class="col-6 col-md-5">
-        <app-months-list *ngFor="let maandElement of maanden"
+        <app-months-list *ngFor="let maandElement of maandenApi"
         [maandItem]="maandElement"
         > <!-- (selectedMaand)="getSelectedMaand(maandElement)"
           door de event van selectedMaand(aka the click van een maandItem in de list), wordt getSelectedMaand(param) getriggered om

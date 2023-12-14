@@ -35,6 +35,15 @@
   background-color: black;
 }
 
+.del-button{
+  margin-left: 18px;
+  border: none;
+}
+
+.del-button:hover{
+  border: 1PX solid black;
+}
+
 .additional-column {
   border: 1px solid black;
   padding: 8px;

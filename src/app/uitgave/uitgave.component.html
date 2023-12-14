@@ -33,7 +33,8 @@
         <tbody>
 
            
-                <tr >               
+                <tr >
+                    <!-- <td><input type="number" class="form-control"[(ngModel)]="id" style="display: none;"></td>               -->
                     <td><input type="date" class="form-control" placeholder="datum" [(ngModel)]="datum"></td>
                     <td><input type="text" class="form-control" placeholder="onderwerp" [(ngModel)]="onderwerp"></td>
                     <td><input id="uitgaveTotaal" type="number" class="form-control" placeholder="totaal" [(ngModel)]="totaal"></td>
@@ -43,7 +44,7 @@
                     <td><input type="text" class="form-control" placeholder="totaal" formControlName="totaal1"></td> -->
 
                     <td>
-                        <button class="btn btn-table" type="submit" (click)="createUitgaveMaand()">Save Uitgave</button>
+                        <button class="btn btn-table" type="submit" (click)="createUitgaveMaandApi()">Save Uitgave</button>
                     </td>
                     <!-- <div *ngIf="registerUitgave.invalid && (registerUitgave.dirty || registerUitgave.touched)" class="text-danger">
                         Vul alle velden in.
@@ -51,12 +52,39 @@
                  -->
                 </tr>
 
-                <tr *ngFor="let uitgaveElement of uitgaven" style="margin-bottom: 2px;"
+                <tr *ngFor="let uitgaveElement of uitgavenApi" style="margin-bottom: 2px;"
                 >
                     
                     <td class="data-table" style="border-left: none;" >{{uitgaveElement.datum}}</td>
-                    <td class="data-table" >{{uitgaveElement.onderwerp}}</td>
+
+                    <td class="data-table">
+                        <div class="d-flex justify-content-between align-items-center" style="padding-right: 5px;">
+
+                            <div *ngIf="isEditing && editingUitgave.id == uitgaveElement.id; else notEditing" class="input-group">
+                             <input (keydown.enter)="stopEditingOnderwerp(editedOnderwerp)"  [(ngModel)]="editedOnderwerp" >
+                             <span class="input-group-text" style="cursor: pointer;" (click)="cancelEditingOnderwerp()">
+                                <i class="bi bi-x-lg" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); " ></i>
+                             </span>
+                            </div>
+                          <ng-template #notEditing>
+                            <span>{{uitgaveElement.onderwerp}}</span>
+                            <i class="bi bi-pencil-square" style="cursor: pointer;"(click)="startEditingOnderwerp(uitgaveElement)"></i></ng-template>
+                        </div>
+                    
+                    </td>
+
                     <td class="data-table">{{uitgaveElement.totaal}}</td>
+
+                    <td>
+                    
+                            <button type="button" class="btn del-button" (click)="deleteUitgave(uitgaveElement.id)" >
+                             <i class="bi bi-trash-fill" style="padding-right: 8px; "></i> <strong>DELETE</strong>
+                            </button>
+
+                            
+                        
+                        
+                    </td>
                    
                     
                     
@@ -70,13 +98,10 @@
             <tr>
                 <td></td>
                 
-                <!-- <td *ngIf="totaal === 0; else totaalOptellen">Totale uitgaven: {{totaal}}</td>
-                <ng-template #totaalOptellen>
-                    <td>Totale uitgaven: {{totaal + totaal}}</td>
-                </ng-template> -->
+                
 
-                <td *ngIf="totaalAlles !== 0">Totale uitgaven: </td>
-                <td class="boxed-cell">{{totaalAlles}}</td>
+                <td>Totale uitgaven: </td>
+                <td class="boxed-cell"></td>
                 
                 
 
