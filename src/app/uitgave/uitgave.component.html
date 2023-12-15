@@ -8,10 +8,8 @@
 
                 <div class="additional-column ">
                     <h5>Totale inkomen: SRD {{maandInkomen}}</h5>
-                    <h5 style="background-color: #333; color: white; border-radius: 4px;">Rest: SRD {{maandInkomen - totaalAlles}} </h5>
-                    <!-- <ng-template #notNull>
-                        <h5>Rest: SRD {{maandInkomen - totaalAlles}}</h5>
-                    </ng-template> -->
+                    <h5 style="background-color: #333; color: white; border-radius: 4px;">Rest: SRD {{restUitgaven}} </h5>
+                    
                 </div>
                
             </div>
@@ -101,7 +99,7 @@
                 
 
                 <td>Totale uitgaven: </td>
-                <td class="boxed-cell"></td>
+                <td class="boxed-cell">{{totaalUitgaven}}</td>
                 
                 
 

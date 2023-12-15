@@ -24,6 +24,7 @@
 .boxed-cell{
  
   border: 1px solid #ccc;
+  padding-left: 10px;
 }
 
 .btn-table{

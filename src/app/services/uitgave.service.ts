@@ -35,6 +35,11 @@ export class UitgaveService {
 
   }
 
+  public getVerschilInkomenUitgaven(maandId: number): Observable<number>{
+    return this.http.get<number>(`${this.apiServerUrl}/uitgaven/verschil/${maandId}`);
+
+  }
+
   public addNewUitgave(uitgave: Uitgave): Observable<Uitgave>{
     return this.http.post<Uitgave>(`${this.apiServerUrl}/uitgaven/addUitgave`, uitgave);
   }

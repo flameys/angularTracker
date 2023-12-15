@@ -41,7 +41,11 @@ export class UitgaveComponent implements OnInit {
   editedOnderwerp = '';
   editedTotaal: number;
   editingUitgave: Uitgave | undefined;
-  totaalUitgaven: number = 0;  
+
+  totaalUitgaven: number;
+  restUitgaven: number;  
+
+  
 
  
 
@@ -76,6 +80,9 @@ export class UitgaveComponent implements OnInit {
         this.maandObject = response.find(maand => maand.maand == this.maandString && maand.jaar == this.maandJaar 
           && maand.amount == this.maandInkomen); 
           console.log(this.maandObject);
+          this.getTotalAmount();
+          this.getRest();
+          
       }
     );
   }
@@ -87,6 +94,7 @@ export class UitgaveComponent implements OnInit {
         this.uitgavenApi = response.filter(uitg => uitg.maand.maand === this.maandString && uitg.maand.jaar == this.maandJaar
           && uitg.maand.amount === this.maandInkomen); 
           console.log(this.uitgavenApi);
+          
       }
     );
   }
@@ -95,12 +103,20 @@ export class UitgaveComponent implements OnInit {
     this.service.getAmountUitgaven(this.maandObject.id).subscribe(
       (response) =>{
         console.log('Totaal is ', response);
-        
+        this.totaalUitgaven = response;
       }
     );
   }
 
-
+  getRest(){
+    this.service.getVerschilInkomenUitgaven(this.maandObject.id).subscribe(
+      (response) => {
+        console.log('Rest is ', response);
+        this.restUitgaven = response;
+      
+      }
+    )
+  }
   
 
   //create uitgave maand met api
@@ -114,16 +130,11 @@ export class UitgaveComponent implements OnInit {
       console.log('Created successful', response);
       this.uitgavenApi.push(response);
       this.getTotalAmount();
+      this.getRest();
+      
+      
       
   });
-
-  
-    // this.inputTotaal = this.storeOldTotaal(this.totaal);
-  
-    if (!isNaN(this.totaal)) {
-      this.totaalAlles = (this.totaalAlles || 0) + this.totaal;
-    }
-
     this.datum = '';
     this.onderwerp = '';
     this.totaal = null;
@@ -167,6 +178,9 @@ export class UitgaveComponent implements OnInit {
         console.log('successfully deleted');
         this.uitgaven.splice(getId);
         this.getUitgavenApi();
+        this.getTotalAmount();
+        this.getRest();
+        
       }
     );
 
